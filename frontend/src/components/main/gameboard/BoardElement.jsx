@@ -1,7 +1,6 @@
 import React from "react";
 
 const BoardElement = (props) => {
-    console.log('render')
   return (
     <div
       onClick={() => props.controlGame(props.index)}
