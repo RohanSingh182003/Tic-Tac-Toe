@@ -2,7 +2,7 @@ import React from "react";
 
 const LandingPage = () => {
   return (
-    <div className="grid place-items-center h-[90vh]">
+    <div className="grid place-items-center h-[80vh]">
       {/* ---------------------------------- heading ---------------------------------- */}
       <div className="text-6xl w-full main-heading">
         <p className="text-center text-3xl text-gray-600">Async</p>
