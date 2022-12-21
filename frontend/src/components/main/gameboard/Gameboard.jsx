@@ -6,8 +6,23 @@ import winConditions from "../../../helpers/WinConditions.json";
 const Gameboard = () => {
   const [arr, setArr] = useState(Array(9).fill("")); //initialize an array of size 9 with empty string
   const [count, setCount] = useState(0);
+  const [winner, setWinner] = useState(null)
   // check the winner
-  const checkWinner = (i) => {
+  const checkWinner = (arr) => {
+    winConditions.forEach((ele) => {
+      let [a, b, c] = ele;
+      let first = arr[a];
+      let second = arr[b];
+      let third = arr[c];
+      if(first != '' && second != '' && third != ''){
+        if(first === 'x' && second === 'x' && third === 'x'){
+          return setWinner('x')
+        }
+        if(first === 'o' && second === 'o' && third === 'o'){
+          return setWinner('o')
+        }
+      }
+    });
   };
   // control game inputs
   const controlGame = (i) => {
@@ -20,7 +35,7 @@ const Gameboard = () => {
     }
     setCount(count + 1);
     setArr(opArr);
-    checkWinner(i);
+    checkWinner(opArr);
   };
   return (
     <div className="place-self-start pt-4 w-full md:grid md:place-items-center">
@@ -42,11 +57,11 @@ const Gameboard = () => {
         ))}
       </div>
       {/* ------------------------------------ complete message ------------------------------------ */}
-      <div className="absolute bottom-4 w-full right-0 px-4">
-        <button className="mt-6 w-full p-3 bg-success text-white md:w-[30rem]">
-          You won
+      {winner && <div className="absolute bottom-4 w-full right-0 px-4">
+        <button className={`mt-6 w-full p-3 ${winner === 'x' ? 'bg-success' : 'bg-error'} text-white`}>
+          {winner === 'x' ? 'You won' : 'You lose'}
         </button>
-      </div>
+      </div>}
     </div>
   );
 };

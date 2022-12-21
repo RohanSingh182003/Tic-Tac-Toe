@@ -5,7 +5,7 @@ const GamePiece = () => {
   return (
     <div className='mt-2'>
         <p className='text-sm text-gray-600'>Your piece</p>
-        <AiOutlineClose className='text-6xl ml-3 mt-1 text-blue-700'/>
+        <p className='text-7xl text-blue-700 ml-4'>x</p>
     </div>
   )
 }
